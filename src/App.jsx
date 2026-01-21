@@ -6,7 +6,7 @@ import Projects from './components/Projects'
 import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import { ThemeProvider } from './context/ThemeContext'
+import ThemeProvider from './context/ThemeContext'
 
 function App() {
   return (
