@@ -2,14 +2,19 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const ThemeContext = createContext()
 
-export function ThemeProvider({ children }) {
+function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark'
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark'
+    }
+    return 'dark'
   })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme)
+    }
   }, [theme])
 
   const toggleTheme = () => {
@@ -24,3 +29,4 @@ export function ThemeProvider({ children }) {
 }
 
 export const useTheme = () => useContext(ThemeContext)
+export default ThemeProvider
