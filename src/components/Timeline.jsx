@@ -6,6 +6,14 @@ export default function Timeline() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1, margin: '-100px' })
 
+  // Extract unique years from timeline items
+  const extractYear = (period) => {
+    if (!period) return null
+    // Extract first year from period (e.g., "2021 - Present" -> "2021", "Jun 2024 - Aug 2024" -> "2024")
+    const yearMatch = period.match(/\b(20\d{2})\b/)
+    return yearMatch ? yearMatch[1] : null
+  }
+
   const timelineItems = [
     {
       type: 'education',
@@ -36,26 +44,29 @@ export default function Timeline() {
           ],
           image: '/images/timeline/massa-logo.jpg'
         }
-      ]
-    },
-    {
-      type: 'education',
-      title: 'Student',
-      company: 'Colby College',
-      location: 'Waterville, ME',
-      period: '2019 - 2021',
-      description: 'Completed foundational coursework before transferring to Northeastern University.',
-      achievements: [
-        'Completed general education requirements',
-        'Developed strong foundation in mathematics and sciences'
       ],
-      icon: '🎓',
-      image: '/images/timeline/colby-logo.jpg',
-      featuredArticle: {
-        title: 'Colby Creates: A Practical Look at Entrepreneurship',
-        url: 'https://news.colby.edu/story/colby-creates-a-practical-look-at-entrepreneurship/',
-        description: 'Featured in Colby College news'
-      }
+      research: [
+        {
+          title: 'Research Assistant',
+          company: 'Soft Tissue Mechanics Lab',
+          location: 'Northeastern University',
+          period: '2023 - Present',
+          description: 'Conducting research in biomechanics, performing modal analysis and developing visualization tools for brain impact analysis.',
+          achievements: [
+            'Performed modal analysis in ANSYS on MRI-based brain meshes',
+            'Developed Python-based visualization tools for 3D vector field analysis',
+            'Analyzed brain reactivity under simulated collision forces',
+            'Contributed to understanding of traumatic brain injury mechanics'
+          ],
+          image: '/images/timeline/soft-tissue-lab-logo.jpg',
+          featuredArticle: {
+            title: 'PEAK Awardees Jump into Fall Projects',
+            url: 'http://undergraduate.northeastern.edu/research/news/peak-awardees-jump-into-fall-projects/',
+            description: 'Featured in Northeastern Undergraduate Research & Fellowships',
+            previewImage: '/images/timeline/peak-article-preview.jpg'
+          }
+        }
+      ]
     },
     {
       type: 'work',
@@ -73,57 +84,54 @@ export default function Timeline() {
       image: '/images/timeline/udha-logo.jpg'
     },
     {
-      type: 'work',
-      title: 'Product Intern',
-      company: 'Avinet Research Supplies',
-      location: 'Portland, ME · Remote',
-      period: 'Jan 2024 - Feb 2024',
-      description: 'Worked on product development and research supply solutions.',
+      type: 'education',
+      title: 'Student',
+      company: 'Colby College',
+      location: 'Waterville, ME',
+      period: '2019 - 2021',
+      description: 'Completed foundational coursework before transferring to Northeastern University.',
       achievements: [
-        'Supported product development initiatives',
-        'Contributed to research supply solutions',
-        'Gained experience in product management'
+        'Completed general education requirements',
+        'Developed strong foundation in mathematics and sciences'
       ],
-      icon: '📦',
-      image: '/images/timeline/avinet-logo.jpg'
-    },
-    {
-      type: 'research',
-      title: 'Research Assistant',
-      company: 'Soft Tissue Mechanics Lab',
-      location: 'Northeastern University',
-      period: '2023 - Present',
-      description: 'Conducting research in biomechanics, performing modal analysis and developing visualization tools for brain impact analysis.',
-      achievements: [
-        'Performed modal analysis in ANSYS on MRI-based brain meshes',
-        'Developed Python-based visualization tools for 3D vector field analysis',
-        'Analyzed brain reactivity under simulated collision forces',
-        'Contributed to understanding of traumatic brain injury mechanics'
-      ],
-      icon: '🔬',
-      image: '/images/timeline/soft-tissue-lab-logo.jpg',
+      icon: '🎓',
+      image: '/images/timeline/colby-logo.jpg',
       featuredArticle: {
-        title: 'PEAK Awardees Jump into Fall Projects',
-        url: 'http://undergraduate.northeastern.edu/research/news/peak-awardees-jump-into-fall-projects/',
-        description: 'Featured in Northeastern Undergraduate Research & Fellowships'
-      }
-    },
-    {
-      type: 'work',
-      title: 'Automated Material Sorting System',
-      company: 'Quality Control Project',
-      location: 'Northeastern University',
-      period: '2023',
-      description: 'Led development of an automated material sorting system using computer vision and 3D printing.',
-      achievements: [
-        'Designed custom test fixtures via 3D-printed prototyping',
-        'Developed computer-vision software in Python',
-        'Reduced quality-control processing time by 80%'
-      ],
-      icon: '🤖',
-      image: '/images/timeline/qc-project-logo.jpg'
+        title: 'Colby Creates: A Practical Look at Entrepreneurship',
+        url: 'https://news.colby.edu/story/colby-creates-a-practical-look-at-entrepreneurship/',
+        description: 'Featured in Colby College news',
+        previewImage: '/images/timeline/colby-article-preview.jpg'
+      },
+      internships: [
+        {
+          title: 'Product Intern',
+          company: 'Avinet Research Supplies',
+          location: 'Portland, ME · Remote',
+          period: 'Jan 2024 - Feb 2024',
+          description: 'Worked on product development and research supply solutions.',
+          achievements: [
+            'Supported product development initiatives',
+            'Contributed to research supply solutions',
+            'Gained experience in product management'
+          ],
+          image: '/images/timeline/avinet-logo.jpg'
+        }
+      ]
     }
   ]
+
+  // Get unique years only from main timeline items (not nested items)
+  // Only show years that represent actual changes/transitions
+  const getUniqueYears = () => {
+    const years = new Set()
+    timelineItems.forEach(item => {
+      const year = extractYear(item.period)
+      if (year) years.add(year)
+    })
+    return Array.from(years).sort((a, b) => parseInt(b) - parseInt(a))
+  }
+
+  const uniqueYears = getUniqueYears()
 
   return (
     <section id="timeline" className="timeline" ref={ref}>
@@ -147,6 +155,54 @@ export default function Timeline() {
         </motion.p>
 
         <div className="timeline-container">
+          {/* Year markers - only show unique years from main items, positioned on the line */}
+          {uniqueYears.map((year) => {
+            // Find the index of the first item with this year
+            let itemIndex = -1
+            timelineItems.forEach((item, idx) => {
+              if (itemIndex === -1) {
+                const itemYear = extractYear(item.period)
+                if (itemYear === year) {
+                  itemIndex = idx
+                }
+              }
+            })
+            
+            // Position year marker to align with timeline marker circles
+            // Timeline markers are at the top of each timeline-item
+            // Calculate position as percentage of container height
+            const totalItems = timelineItems.length
+            let topPosition = '0%'
+            
+            if (itemIndex >= 0 && totalItems > 0) {
+              if (totalItems === 1) {
+                topPosition = '0%'
+              } else {
+                // Position markers evenly along the timeline
+                // Account for padding at top and bottom to avoid overlap with content
+                const topPadding = 5 // percentage
+                const bottomPadding = 5 // percentage
+                const availableSpace = 100 - topPadding - bottomPadding
+                const positionInSpace = (itemIndex / (totalItems - 1)) * availableSpace
+                topPosition = `${topPadding + positionInSpace}%`
+              }
+            }
+            
+            return (
+              <motion.div
+                key={`year-${year}`}
+                className="timeline-year-marker"
+                style={{ top: topPosition }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 + itemIndex * 0.1 }}
+              >
+                <div className="year-marker-dot"></div>
+                <div className="year-marker-label">{year}</div>
+              </motion.div>
+            )
+          })}
+          
           {timelineItems.map((item, index) => (
             <motion.div
               key={index}
@@ -160,27 +216,48 @@ export default function Timeline() {
               </div>
               
               <div className="timeline-content">
-                {item.image && (
-                  <div className="timeline-image-container">
-                    <img 
-                      src={item.image} 
-                      alt={`${item.company} logo`}
-                      className="timeline-image"
-                      onError={(e) => {
-                        e.target.style.display = 'none'
-                      }}
-                    />
-                  </div>
-                )}
-                <div className="timeline-header">
-                  <div className="timeline-title-row">
-                    <h3 className="timeline-title">{item.title}</h3>
-                    <span className="timeline-type-badge">{item.type}</span>
-                  </div>
-                  <div className="timeline-company">{item.company}</div>
-                  <div className="timeline-meta">
-                    <span className="timeline-location">{item.location}</span>
-                    <span className="timeline-period">{item.period}</span>
+                <div className="timeline-content-top">
+                  {item.image && (
+                    <div className="timeline-image-container">
+                      <img 
+                        src={item.image} 
+                        alt={`${item.company} logo`}
+                        className="timeline-image"
+                        loading="lazy"
+                        onError={(e) => {
+                          // Try alternative extensions
+                          const src = e.target.src
+                          const baseUrl = window.location.origin
+                          const relativePath = src.replace(baseUrl, '')
+                          
+                          if (relativePath.includes('.jpg')) {
+                            e.target.src = relativePath.replace('.jpg', '.png')
+                          } else if (relativePath.includes('.png')) {
+                            e.target.src = relativePath.replace('.png', '.jpeg')
+                          } else if (relativePath.includes('.jpeg')) {
+                            e.target.style.display = 'none'
+                          } else {
+                            e.target.style.display = 'none'
+                          }
+                        }}
+                        onLoad={(e) => {
+                          // Ensure image is visible when loaded
+                          e.target.style.display = 'block'
+                          e.target.parentElement.style.display = 'flex'
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div className="timeline-header">
+                    <div className="timeline-title-row">
+                      <h3 className="timeline-title">{item.title}</h3>
+                      <span className="timeline-type-badge">{item.type}</span>
+                    </div>
+                    <div className="timeline-company">{item.company}</div>
+                    <div className="timeline-meta">
+                      <span className="timeline-location">{item.location}</span>
+                      <span className="timeline-period">{item.period}</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -208,6 +285,18 @@ export default function Timeline() {
                       rel="noopener noreferrer"
                       className="featured-article-link"
                     >
+                      {item.featuredArticle.previewImage && (
+                        <div className="featured-article-preview">
+                          <img 
+                            src={item.featuredArticle.previewImage} 
+                            alt="Article preview"
+                            className="featured-article-image"
+                            onError={(e) => {
+                              e.target.style.display = 'none'
+                            }}
+                          />
+                        </div>
+                      )}
                       <span className="featured-article-icon">📰</span>
                       <div className="featured-article-content">
                         <h4 className="featured-article-title">{item.featuredArticle.title}</h4>
@@ -222,6 +311,7 @@ export default function Timeline() {
 
                 {item.coops && item.coops.length > 0 && (
                   <div className="timeline-coops">
+                    <div className="coops-label">Co-op Program</div>
                     {item.coops.map((coop, coopIndex) => (
                       <motion.div
                         key={coopIndex}
@@ -259,6 +349,143 @@ export default function Timeline() {
                           {coop.achievements && coop.achievements.length > 0 && (
                             <ul className="coop-achievements">
                               {coop.achievements.map((achievement, i) => (
+                                <li key={i}>{achievement}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {item.research && item.research.length > 0 && (
+                  <div className="timeline-research">
+                    <div className="research-label">Research</div>
+                    {item.research.map((research, researchIndex) => (
+                      <motion.div
+                        key={researchIndex}
+                        className="timeline-research-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + researchIndex * 0.1 }}
+                      >
+                        <div className="research-connector"></div>
+                        <div className="research-content">
+                          {research.image && (
+                            <div className="research-image-container">
+                              <img 
+                                src={research.image} 
+                                alt={`${research.company} logo`}
+                                className="research-image"
+                                onError={(e) => {
+                                  e.target.style.display = 'none'
+                                }}
+                              />
+                            </div>
+                          )}
+                          <div className="research-header">
+                            <div className="research-title-row">
+                              <h4 className="research-title">{research.title}</h4>
+                              <span className="research-badge">Research</span>
+                            </div>
+                            <div className="research-company">{research.company}</div>
+                            <div className="research-meta">
+                              <span className="research-location">{research.location}</span>
+                              <span className="research-period">{research.period}</span>
+                            </div>
+                          </div>
+                          <p className="research-description">{research.description}</p>
+                          {research.achievements && research.achievements.length > 0 && (
+                            <ul className="research-achievements">
+                              {research.achievements.map((achievement, i) => (
+                                <li key={i}>{achievement}</li>
+                              ))}
+                            </ul>
+                          )}
+                          {research.featuredArticle && (
+                            <motion.div
+                              className="research-featured-article"
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={isInView ? { opacity: 1, y: 0 } : {}}
+                              transition={{ duration: 0.5, delay: 0.5 + index * 0.15 + researchIndex * 0.1 }}
+                            >
+                              <div className="featured-article-label">Featured Article</div>
+                              <a
+                                href={research.featuredArticle.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="featured-article-link"
+                              >
+                                {research.featuredArticle.previewImage && (
+                                  <div className="featured-article-preview">
+                                    <img 
+                                      src={research.featuredArticle.previewImage} 
+                                      alt="Article preview"
+                                      className="featured-article-image"
+                                      onError={(e) => {
+                                        e.target.style.display = 'none'
+                                      }}
+                                    />
+                                  </div>
+                                )}
+                                <span className="featured-article-icon">📰</span>
+                                <div className="featured-article-content">
+                                  <h4 className="featured-article-title">{research.featuredArticle.title}</h4>
+                                  {research.featuredArticle.description && (
+                                    <p className="featured-article-description">{research.featuredArticle.description}</p>
+                                  )}
+                                </div>
+                                <span className="featured-article-arrow">→</span>
+                              </a>
+                            </motion.div>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {item.internships && item.internships.length > 0 && (
+                  <div className="timeline-internships">
+                    <div className="internships-label">Internships</div>
+                    {item.internships.map((internship, internshipIndex) => (
+                      <motion.div
+                        key={internshipIndex}
+                        className="timeline-internship"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + internshipIndex * 0.1 }}
+                      >
+                        <div className="internship-connector"></div>
+                        <div className="internship-content">
+                          {internship.image && (
+                            <div className="internship-image-container">
+                              <img 
+                                src={internship.image} 
+                                alt={`${internship.company} logo`}
+                                className="internship-image"
+                                onError={(e) => {
+                                  e.target.style.display = 'none'
+                                }}
+                              />
+                            </div>
+                          )}
+                          <div className="internship-header">
+                            <div className="internship-title-row">
+                              <h4 className="internship-title">{internship.title}</h4>
+                              <span className="internship-badge">Internship</span>
+                            </div>
+                            <div className="internship-company">{internship.company}</div>
+                            <div className="internship-meta">
+                              <span className="internship-location">{internship.location}</span>
+                              <span className="internship-period">{internship.period}</span>
+                            </div>
+                          </div>
+                          <p className="internship-description">{internship.description}</p>
+                          {internship.achievements && internship.achievements.length > 0 && (
+                            <ul className="internship-achievements">
+                              {internship.achievements.map((achievement, i) => (
                                 <li key={i}>{achievement}</li>
                               ))}
                             </ul>

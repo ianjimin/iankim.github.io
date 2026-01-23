@@ -59,13 +59,15 @@ export default function Contact() {
               </p>
             </div>
             <div className="contact-links">
-              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/ian-kim30/" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/ianjimin" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
-              <a href="#resume">Resume</a>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
             </div>
           </motion.div>
 

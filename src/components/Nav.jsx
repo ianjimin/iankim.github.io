@@ -16,9 +16,8 @@ export default function Nav() {
   }, [])
 
   const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
+    { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
     { href: '#timeline', label: 'Experience' },
     { href: '#activities', label: 'Activities' },
@@ -45,9 +44,6 @@ export default function Nav() {
               {item.label}
             </a>
           ))}
-          <a href="#contact" className="nav-resume" onClick={() => setIsMobileMenuOpen(false)}>
-            Get in Touch
-          </a>
         </div>
 
         <div className="nav-actions">

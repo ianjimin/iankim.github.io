@@ -73,18 +73,6 @@ export default function Hero() {
             </span>
           </h2>
         </motion.div>
-
-        <motion.div
-          className="hero-cta"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <a href="#contact" className="hero-connect">Let's Connect</a>
-          <a href="mailto:iank8992@gmail.com" className="hero-email">
-            iank8992@gmail.com
-          </a>
-        </motion.div>
       </div>
     </section>
   )
