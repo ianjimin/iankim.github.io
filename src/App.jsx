@@ -1,8 +1,7 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
 import Projects from './components/Projects'
+import About from './components/About'
 import Services from './components/Services'
 import Timeline from './components/Timeline'
 import Activities from './components/Activities'
@@ -17,9 +16,8 @@ function App() {
         <Nav />
         <main>
           <Hero />
-          <About />
-          <Skills />
           <Projects />
+          <About />
           <Services />
           <Timeline />
           <Activities />

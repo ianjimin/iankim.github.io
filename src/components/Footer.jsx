@@ -13,10 +13,10 @@ export default function Footer() {
         >
           <p className="footer-text">© 2026 Ian Kim. Made with 💙</p>
           <div className="footer-links">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/ian-kim30/" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/ianjimin" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
             <a href="#resume">Resume</a>
