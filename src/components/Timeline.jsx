@@ -20,7 +20,7 @@ export default function Timeline() {
       title: 'Mechanical Engineering Student',
       company: 'Northeastern University',
       location: 'Boston, MA',
-      period: '2021 - Present',
+      period: '2024 - Present',
       description: 'Pursuing Bachelor of Science in Mechanical Engineering with focus on electroacoustic design, multiphysics simulation, and product development.',
       achievements: [
         'Coursework in CAD, FEA, multiphysics simulation, and manufacturing',
@@ -34,7 +34,7 @@ export default function Timeline() {
           title: 'Mechanical Engineering Co-op',
           company: 'Massa Products Corporation',
           location: 'Hingham, MA',
-          period: '2024',
+          period: '2025',
           description: 'Designed and developed acoustic transducers from concept to manufacturing, working on product development and multiphysics simulation.',
           achievements: [
             'Designed omnidirectional hydrophone from concept to manufacturing',
@@ -50,7 +50,7 @@ export default function Timeline() {
           title: 'Research Assistant',
           company: 'Soft Tissue Mechanics Lab',
           location: 'Northeastern University',
-          period: '2023 - Present',
+          period: '2024 - 2025',
           description: 'Conducting research in biomechanics, performing modal analysis and developing visualization tools for brain impact analysis.',
           achievements: [
             'Performed modal analysis in ANSYS on MRI-based brain meshes',
@@ -73,7 +73,7 @@ export default function Timeline() {
       title: 'Project Intern',
       company: 'Uganda Development and Health Associates',
       location: 'Remote',
-      period: 'Jun 2024 - Aug 2024',
+      period: '2024',
       description: 'Worked on development and health projects supporting community initiatives in Uganda.',
       achievements: [
         'Supported project planning and implementation',
@@ -88,7 +88,7 @@ export default function Timeline() {
       title: 'Student',
       company: 'Colby College',
       location: 'Waterville, ME',
-      period: '2019 - 2021',
+      period: '2023 - 2024',
       description: 'Completed foundational coursework before transferring to Northeastern University.',
       achievements: [
         'Completed general education requirements',
