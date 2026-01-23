@@ -137,8 +137,7 @@ export default function Projects() {
       previewImage: '/images/projects/phone-box-prototype-preview.jpg',
       images: [
         '/images/projects/phone-box-prototype.jpg',
-        '/images/projects/phone-box-cad-render.jpg',
-        '/images/projects/phone-box-technical-drawings.jpg'
+        '/images/projects/phone-box-prototype-1.jpg'
       ],
       details: [
         'Reimagined screen time management through a flexible and gamified approach',
@@ -153,6 +152,22 @@ export default function Projects() {
         'Fabricated prototype with hand tools and integrated electrical components'
       ],
       technologies: ['Onshape CAD', 'Cura', 'AutoCAD', '3D Printing', 'Laser Cutting', 'Ultrasonic Sensor', 'LCD Screen', 'LEDs', 'Electronics', 'Prototyping']
+    },
+    {
+      title: 'Plate Deformation: Analytical vs. FEA',
+      description: 'Compared analytical plate theory to SolidWorks FEA for a rectangular steel plate under concentrated point loads. Used circular-plate simplification and the Shi et al. formulation for rotationally restrained edges. Analyzed deflection at 100 N and 150 N, validated stress remained elastic below yield, and documented sources of error between hand calculations, simulation, and physical behavior.',
+      tags: ['FEA', 'SolidWorks', 'Structural Analysis', 'Plate Theory', 'Research'],
+      link: '/Ian-Kim-Research.pdf',
+      images: [],
+      details: [
+        'Applied plate bending theory: circular-plate simplification and rectangular formulation with rotationally restrained edges (Shi, Li, Wang 2016)',
+        'Hand calculations for 6.22×4.74×0.33 in steel plate: flexural rigidity, deflection at center for 100 N and 150 N point loads',
+        'SolidWorks Simulation: fixed corner holes, alloy steel, point force at center; deformation 2.84e-3 to 4.26e-3 mm',
+        'Compared analytical vs. FEA deflection and deformation change; linear force–deflection agreement between math and simulation',
+        'Stress analysis confirmed maximum stress below yield; deformation remains elastic',
+        'Documented error sources: edge vs. corner constraints, point-load approximation, mesh resolution, material inhomogeneity, thermal and friction effects'
+      ],
+      technologies: ['SolidWorks Simulation', 'FEA', 'Plate Theory', 'Structural Mechanics', 'Hand Calculations']
     }
   ]
 
