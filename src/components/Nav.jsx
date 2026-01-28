@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useTheme } from '../context/ThemeContext'
 import { motion } from 'framer-motion'
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,13 +45,6 @@ export default function Nav() {
         </div>
 
         <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <span className="theme-icon">{theme === 'dark' ? '🌙' : '☀️'}</span>
-          </button>
           <button
             className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
