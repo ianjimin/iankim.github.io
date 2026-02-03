@@ -1,22 +1,20 @@
-# GitHub Pages Setup Checklist
+# Fix: Site Not Showing
 
-## Option A: GitHub Actions (recommended)
+## Step 1: Change Pages source
 
-1. Go to **https://github.com/ianjimin/ianjimin.github.io/settings/pages**
-2. Under **Source**, select **"GitHub Actions"**
-3. Go to **https://github.com/ianjimin/ianjimin.github.io/actions**
-4. Click **"Deploy to GitHub Pages"** → **"Run workflow"** → **"Run workflow"**
-5. Wait for the run to finish (green checkmark), then open **https://ianjimin.github.io**
+1. Open: **https://github.com/ianjimin/ianjimin.github.io/settings/pages**
+2. Under **"Build and deployment"** → **Source**
+3. Select **"Deploy from a branch"** (not "GitHub Actions")
+4. **Branch:** choose **gh-pages**
+5. **Folder:** choose **/ (root)**
+6. Click **Save**
 
-## Option B: Deploy from branch (if Option A fails)
+## Step 2: Wait
 
-1. Go to **https://github.com/ianjimin/ianjimin.github.io/settings/pages**
-2. Under **Source**, select **"Deploy from a branch"**
-3. **Branch:** `gh-pages` | **Folder:** `/ (root)`
-4. Save, then open **https://ianjimin.github.io**
+Wait 1–2 minutes, then open **https://ianjimin.github.io**
 
-## Troubleshooting
+## Step 3: If still blank
 
-- **Blank page:** Hard refresh (Ctrl+Shift+R or Cmd+Shift+R)
-- **404:** Wait 2–3 minutes after deploy
-- **Check workflow:** Actions tab → latest run → all steps green
+1. Go to **Actions** → **Deploy to GitHub Pages** → **Run workflow**
+2. Wait for the run to finish (green checkmark)
+3. Refresh https://ianjimin.github.io
