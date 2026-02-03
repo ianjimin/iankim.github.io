@@ -1,10 +1,7 @@
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Activities() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const labels = [
     { 
@@ -98,50 +95,23 @@ export default function Activities() {
   return (
     <section id="activities" className="activities" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <h2 className="section-title">
           <strong>Activities</strong>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          className="section-subtitle"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-       >
+        <p className="section-subtitle">
           Music production, creative work, and <em>what keeps me inspired</em>
-        </motion.p>
+        </p>
 
         <div className="activities-content">
-          <motion.div
-            className="production-credits"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
+          <div className="production-credits">
             <div className="labels-showcase">
-              <motion.h3
-                className="labels-heading"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+              <h3 className="labels-heading">
                 Labels I Worked With
-              </motion.h3>
+              </h3>
               <div className="labels-background">
                 {labels.map((label, index) => (
-                  <motion.div
-                    key={index}
-                    className="label-item"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
-                    whileHover={{ scale: 1.1, zIndex: 10 }}
-                  >
+                  <div key={index} className="label-item">
                     <div className="label-logo-container">
                       <img
                         src={label.logos[0]}
@@ -153,7 +123,7 @@ export default function Activities() {
                         {label.fallback}
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -161,32 +131,20 @@ export default function Activities() {
             <h3 className="activities-heading">Production Credits</h3>
             <div className="credits-grid">
               {productionCredits.map((credit, index) => (
-                <motion.div
-                  key={index}
-                  className="credit-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
+                <div key={index} className="credit-card">
                   <h4 className="credit-title">{credit.title}</h4>
                   <p className="credit-description">{credit.description}</p>
                   <ul className="credit-achievements">
                     {credit.achievements.map((achievement, i) => (
                       <li key={i}>{achievement}</li>
                     ))}
-                  </ul>
-                </motion.div>
+                    </ul>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="spotify-playlist"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
+          <div className="spotify-playlist">
             <h3 className="activities-heading">Featured Playlist</h3>
             <div className="playlist-container">
               <iframe
@@ -202,7 +160,7 @@ export default function Activities() {
                 title="Spotify Playlist"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

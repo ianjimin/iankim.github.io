@@ -61,7 +61,6 @@ body {
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid var(--color-border);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav.scrolled {
@@ -82,7 +81,6 @@ body {
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .nav-logo:hover {
@@ -99,7 +97,6 @@ body {
   color: var(--color-text);
   text-decoration: none;
   font-size: 0.95rem;
-  transition: color 0.3s ease;
   position: relative;
 }
 
@@ -111,7 +108,6 @@ body {
   width: 0;
   height: 1px;
   background: var(--color-border);
-  transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
@@ -126,7 +122,6 @@ body {
   padding: 0.5rem 1.5rem;
   border: 1px solid var(--color-border);
   border-radius: 0;
-  transition: all 0.3s ease;
 }
 
 .nav-resume:hover {
@@ -156,7 +151,6 @@ body {
   width: 24px;
   height: 2px;
   background-color: var(--color-text);
-  transition: all 0.3s ease;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -183,7 +177,6 @@ body {
   overflow: hidden;
   padding-top: 80px;
   padding-bottom: 1.5rem;
-  transition: background 0.3s ease, background-color 0.3s ease;
 }
 
 .hero::before {
@@ -228,12 +221,6 @@ body {
               var(--color-border) border-box;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
               0 0 0 1px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-headshot:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -296,21 +283,13 @@ body {
   border-radius: 8px;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
   border: 2px solid var(--color-mid);
-}
-
-
-.hero-connect:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
 }
 
 .hero-email {
   color: var(--color-text-light);
   text-decoration: none;
   font-size: 1rem;
-  transition: color 0.3s ease;
 }
 
 .hero-email:hover {
@@ -336,25 +315,12 @@ body {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  transition: all 0.3s ease;
   min-width: 100px;
-}
-
-.feature-item:hover {
-  border-color: var(--color-border);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
   font-size: 2rem;
   filter: grayscale(0.3);
-  transition: all 0.3s ease;
-}
-
-.feature-item:hover .feature-icon {
-  filter: grayscale(0);
-  transform: scale(1.1);
 }
 
 .feature-label {
@@ -473,7 +439,6 @@ section {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
 .skill-category:hover {
@@ -502,24 +467,6 @@ section {
 .skill-stars .star {
   color: var(--color-text);
   font-size: 1rem;
-  animation: starTwinkle 2s ease-in-out infinite;
-}
-
-.skill-stars .star:nth-child(1) { animation-delay: 0s; }
-.skill-stars .star:nth-child(2) { animation-delay: 0.2s; }
-.skill-stars .star:nth-child(3) { animation-delay: 0.4s; }
-.skill-stars .star:nth-child(4) { animation-delay: 0.6s; }
-.skill-stars .star:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes starTwinkle {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
 }
 
 .skill-description {
@@ -542,13 +489,11 @@ section {
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--color-text);
-  transition: all 0.3s ease;
 }
 
 .skill-tags span:hover {
   background: var(--color-text);
   border-color: var(--color-border);
-  transform: translateY(-1px);
 }
 
 /* Projects Section - List Layout */
@@ -574,7 +519,6 @@ section {
   border: 1px solid var(--color-border);
   border-radius: 12px;
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
   min-width: 0;
 }
@@ -608,11 +552,6 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.project-item:hover .project-preview-img {
-  transform: scale(1.05);
 }
 
 .project-title {
@@ -620,7 +559,6 @@ section {
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
   line-height: 1.3;
 }
 
@@ -650,7 +588,6 @@ section {
   border-radius: 6px;
   font-size: 0.8rem;
   color: var(--color-text-light);
-  transition: all 0.3s ease;
 }
 
 .project-item:hover .project-tags span {
@@ -663,14 +600,12 @@ section {
   color: var(--color-text);
   margin-top: 0.5rem;
   align-self: flex-end;
-  transition: all 0.3s ease;
   opacity: 0.6;
   flex-shrink: 0;
 }
 
 .project-item:hover .project-arrow {
   opacity: 1;
-  transform: translateX(5px);
 }
 
 /* Services Section */
@@ -689,7 +624,6 @@ section {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
 .service-card:hover {
@@ -806,7 +740,6 @@ section {
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
 .contact-links a:hover {
@@ -841,7 +774,6 @@ section {
   color: var(--color-text);
   font-size: 1rem;
   font-family: inherit;
-  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
@@ -861,12 +793,9 @@ section {
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-
 .submit-button:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-mid-dark) 100%);
 }
@@ -900,7 +829,6 @@ section {
   color: var(--color-text-light);
   text-decoration: none;
   font-size: 0.9rem;
-  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -1023,13 +951,11 @@ section {
   align-items: center;
   justify-content: center;
   z-index: 2002;
-  transition: all 0.3s ease;
 }
 
 .modal-close:hover {
   background: var(--color-text);
   color: var(--color-bg);
-  transform: rotate(90deg);
 }
 
 .modal-content {
@@ -1141,7 +1067,6 @@ section {
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--color-text);
-  transition: all 0.3s ease;
 }
 
 .modal-tags span:hover {
@@ -1157,14 +1082,11 @@ section {
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
   border: 2px solid var(--color-mid);
   margin-top: 1rem;
 }
 
-
 .modal-link:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-mid-dark) 100%);
 }
@@ -1246,12 +1168,10 @@ section {
   object-fit: contain;
   opacity: 0.4;
   filter: brightness(0.8) grayscale(0.3) invert(1) hue-rotate(180deg);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .label-item:hover .label-logo {
   opacity: 0.8;
-  transform: scale(1.15);
 }
 
 .label-fallback {
@@ -1284,7 +1204,6 @@ section {
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  transition: all 0.3s ease;
 }
 
 .credit-label-badge:hover {
@@ -1308,7 +1227,6 @@ section {
   object-fit: contain;
   opacity: 0.7;
   filter: brightness(0.9);
-  transition: all 0.3s ease;
 }
 
 .credit-label-badge:hover .credit-label-logo {
@@ -1345,7 +1263,6 @@ section {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
 .credit-card:hover {
@@ -1618,12 +1535,9 @@ section {
     0 2px 10px rgba(0, 0, 0, 0.18),
     0 0 12px rgba(0, 0, 0, 0.1),
     inset 0 1px 2px rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
 }
 
-
 .timeline-item:hover .timeline-marker {
-  transform: scale(1.1);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
@@ -1637,7 +1551,6 @@ section {
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 1.25rem;
-  transition: all 0.3s ease;
   position: relative;
   z-index: 2;
   display: flex;
@@ -1683,7 +1596,6 @@ section {
 .timeline-item:hover .timeline-content {
   border-color: var(--color-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
 }
 
 .timeline-header {
@@ -1795,13 +1707,11 @@ section {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.3s ease;
 }
 
 .featured-article-link:hover {
   background: rgba(0, 0, 0, 0.05);
   border-color: var(--color-border);
-  transform: translateX(4px);
 }
 
 .featured-article-icon {
@@ -1832,11 +1742,6 @@ section {
   font-size: 1.1rem;
   color: var(--color-text);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.featured-article-link:hover .featured-article-arrow {
-  transform: translateX(4px);
 }
 
 .featured-article-preview {
@@ -1931,7 +1836,6 @@ section {
   border-left: 3px solid var(--color-mid);
   border-radius: 6px;
   padding: 1rem;
-  transition: all 0.3s ease;
 }
 
 .coop-image-container {
@@ -1961,7 +1865,6 @@ section {
 .timeline-coop:hover .coop-content {
   border-left-color: var(--color-mid-dark);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transform: translateX(4px);
 }
 
 .coop-header {
@@ -2104,13 +2007,11 @@ section {
   border-left: 3px solid var(--color-darkest);
   border-radius: 6px;
   padding: 1rem;
-  transition: all 0.3s ease;
 }
 
 .timeline-research-item:hover .research-content {
   border-left-color: var(--color-mid);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transform: translateX(4px);
 }
 
 .research-image-container {
@@ -2286,13 +2187,11 @@ section {
   border-left: 3px solid var(--color-mid);
   border-radius: 6px;
   padding: 1rem;
-  transition: all 0.3s ease;
 }
 
 .timeline-internship:hover .internship-content {
   border-left-color: var(--color-mid-dark);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transform: translateX(4px);
 }
 
 .internship-image-container {

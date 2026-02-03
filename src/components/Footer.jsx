@@ -1,16 +1,8 @@
-import { motion } from 'framer-motion'
-
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <motion.div
-          className="footer-content"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="footer-content">
           <p className="footer-text">© 2026 Ian Kim. Made with 💙</p>
           <div className="footer-links">
             <a href="https://www.linkedin.com/in/ian-kim30/" target="_blank" rel="noopener noreferrer">
@@ -19,9 +11,9 @@ export default function Footer() {
             <a href="https://github.com/ianjimin" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <a href="#resume">Resume</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )

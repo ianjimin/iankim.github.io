@@ -1,10 +1,7 @@
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Timeline() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1, margin: '-100px' })
 
   // Extract unique years from timeline items
   const extractYear = (period) => {
@@ -136,23 +133,13 @@ export default function Timeline() {
   return (
     <section id="timeline" className="timeline" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <h2 className="section-title">
           Experience <strong>Timeline</strong>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          className="section-subtitle"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <p className="section-subtitle">
           My journey in <em>mechanical engineering</em> and <strong>research</strong>
-        </motion.p>
+        </p>
 
         <div className="timeline-container">
           {/* Year markers - only show unique years from main items, positioned on the line */}
@@ -189,27 +176,21 @@ export default function Timeline() {
             }
             
             return (
-              <motion.div
+              <div
                 key={`year-${year}`}
                 className="timeline-year-marker"
                 style={{ top: topPosition }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.8 + itemIndex * 0.1 }}
               >
                 <div className="year-marker-dot"></div>
                 <div className="year-marker-label">{year}</div>
-              </motion.div>
+              </div>
             )
           })}
           
           {timelineItems.map((item, index) => (
-            <motion.div
+            <div
               key={index}
               className={`timeline-item timeline-item-${item.type}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
             >
               <div className="timeline-marker">
                 <span className="timeline-icon">{item.icon}</span>
@@ -272,12 +253,7 @@ export default function Timeline() {
                 )}
 
                 {item.featuredArticle && (
-                  <motion.div
-                    className="timeline-featured-article"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                  >
+                  <div className="timeline-featured-article">
                     <div className="featured-article-label">Featured Article</div>
                     <a
                       href={item.featuredArticle.url}
@@ -306,20 +282,14 @@ export default function Timeline() {
                       </div>
                       <span className="featured-article-arrow">→</span>
                     </a>
-                  </motion.div>
+                  </div>
                 )}
 
                 {item.coops && item.coops.length > 0 && (
                   <div className="timeline-coops">
                     <div className="coops-label">Co-op Program</div>
                     {item.coops.map((coop, coopIndex) => (
-                      <motion.div
-                        key={coopIndex}
-                        className="timeline-coop"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + coopIndex * 0.1 }}
-                      >
+                      <div key={coopIndex} className="timeline-coop">
                         <div className="coop-connector"></div>
                         <div className="coop-content">
                           {coop.image && (
@@ -354,7 +324,7 @@ export default function Timeline() {
                             </ul>
                           )}
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -363,13 +333,7 @@ export default function Timeline() {
                   <div className="timeline-research">
                     <div className="research-label">Research</div>
                     {item.research.map((research, researchIndex) => (
-                      <motion.div
-                        key={researchIndex}
-                        className="timeline-research-item"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + researchIndex * 0.1 }}
-                      >
+                      <div key={researchIndex} className="timeline-research-item">
                         <div className="research-connector"></div>
                         <div className="research-content">
                           {research.image && (
@@ -404,12 +368,7 @@ export default function Timeline() {
                             </ul>
                           )}
                           {research.featuredArticle && (
-                            <motion.div
-                              className="research-featured-article"
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={isInView ? { opacity: 1, y: 0 } : {}}
-                              transition={{ duration: 0.5, delay: 0.5 + index * 0.15 + researchIndex * 0.1 }}
-                            >
+                            <div className="research-featured-article">
                               <div className="featured-article-label">Featured Article</div>
                               <a
                                 href={research.featuredArticle.url}
@@ -438,10 +397,10 @@ export default function Timeline() {
                                 </div>
                                 <span className="featured-article-arrow">→</span>
                               </a>
-                            </motion.div>
+                            </div>
                           )}
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -450,13 +409,7 @@ export default function Timeline() {
                   <div className="timeline-internships">
                     <div className="internships-label">Internships</div>
                     {item.internships.map((internship, internshipIndex) => (
-                      <motion.div
-                        key={internshipIndex}
-                        className="timeline-internship"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + internshipIndex * 0.1 }}
-                      >
+                      <div key={internshipIndex} className="timeline-internship">
                         <div className="internship-connector"></div>
                         <div className="internship-content">
                           {internship.image && (
@@ -491,12 +444,12 @@ export default function Timeline() {
                             </ul>
                           )}
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

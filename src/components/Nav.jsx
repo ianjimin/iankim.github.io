@@ -1,17 +1,7 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function Nav() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const navItems = [
     { href: '#projects', label: 'Projects' },
@@ -23,15 +13,9 @@ export default function Nav() {
   ]
 
   return (
-    <motion.nav
-      className={`nav ${isScrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <nav className={`nav ${isMobileMenuOpen ? 'scrolled' : ''}`}>
       <div className="nav-container">
-            <a href="#home" className="nav-logo">Ian Kim</a>
-        
+        <a href="#home" className="nav-logo">Ian Kim</a>
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
             <a
@@ -43,7 +27,6 @@ export default function Nav() {
             </a>
           ))}
         </div>
-
         <div className="nav-actions">
           <button
             className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
@@ -56,6 +39,6 @@ export default function Nav() {
           </button>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   )
 }
