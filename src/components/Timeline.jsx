@@ -3,14 +3,6 @@ import { useRef } from 'react'
 export default function Timeline() {
   const ref = useRef(null)
 
-  // Extract unique years from timeline items
-  const extractYear = (period) => {
-    if (!period) return null
-    // Extract first year from period (e.g., "2021 - Present" -> "2021", "Jun 2024 - Aug 2024" -> "2024")
-    const yearMatch = period.match(/\b(20\d{2})\b/)
-    return yearMatch ? yearMatch[1] : null
-  }
-
   const timelineItems = [
     {
       type: 'education',
@@ -117,19 +109,6 @@ export default function Timeline() {
     }
   ]
 
-  // Get unique years only from main timeline items (not nested items)
-  // Only show years that represent actual changes/transitions
-  const getUniqueYears = () => {
-    const years = new Set()
-    timelineItems.forEach(item => {
-      const year = extractYear(item.period)
-      if (year) years.add(year)
-    })
-    return Array.from(years).sort((a, b) => parseInt(b) - parseInt(a))
-  }
-
-  const uniqueYears = getUniqueYears()
-
   return (
     <section id="timeline" className="timeline" ref={ref}>
       <div className="container">
@@ -142,60 +121,12 @@ export default function Timeline() {
         </p>
 
         <div className="timeline-container">
-          {/* Year markers - only show unique years from main items, positioned on the line */}
-          {uniqueYears.map((year) => {
-            // Find the index of the first item with this year
-            let itemIndex = -1
-            timelineItems.forEach((item, idx) => {
-              if (itemIndex === -1) {
-                const itemYear = extractYear(item.period)
-                if (itemYear === year) {
-                  itemIndex = idx
-                }
-              }
-            })
-            
-            // Position year marker to align with timeline marker circles
-            // Timeline markers are at the top of each timeline-item
-            // Calculate position as percentage of container height
-            const totalItems = timelineItems.length
-            let topPosition = '0%'
-            
-            if (itemIndex >= 0 && totalItems > 0) {
-              if (totalItems === 1) {
-                topPosition = '0%'
-              } else {
-                // Position markers evenly along the timeline
-                // Account for padding at top and bottom to avoid overlap with content
-                const topPadding = 5 // percentage
-                const bottomPadding = 5 // percentage
-                const availableSpace = 100 - topPadding - bottomPadding
-                const positionInSpace = (itemIndex / (totalItems - 1)) * availableSpace
-                topPosition = `${topPadding + positionInSpace}%`
-              }
-            }
-            
-            return (
-              <div
-                key={`year-${year}`}
-                className="timeline-year-marker"
-                style={{ top: topPosition }}
-              >
-                <div className="year-marker-dot"></div>
-                <div className="year-marker-label">{year}</div>
-              </div>
-            )
-          })}
-          
           {timelineItems.map((item, index) => (
             <div
               key={index}
               className={`timeline-item timeline-item-${item.type}`}
             >
-              <div className="timeline-marker">
-                <span className="timeline-icon">{item.icon}</span>
-              </div>
-              
+              <div className="timeline-marker" />
               <div className="timeline-content">
                 <div className="timeline-content-top">
                   {item.image && (
