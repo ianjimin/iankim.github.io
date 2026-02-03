@@ -1,11 +1,4 @@
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { motion } from 'framer-motion'
-
 export default function Services() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-
   const services = [
     {
       title: 'Electroacoustic Design',
@@ -25,27 +18,14 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="services" ref={ref}>
+    <section id="services" className="services">
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <h2 className="section-title">
           What I <strong>Can Do</strong> For You
-        </motion.h2>
-
+        </h2>
         <div className="services-grid">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="service-card"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
+            <div key={index} className="service-card">
               <h3 className="service-title">
                 <strong>{service.title}</strong>
               </h3>
@@ -55,7 +35,7 @@ export default function Services() {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,10 +1,7 @@
-import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Contact() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,25 +19,15 @@ export default function Contact() {
   return (
     <section id="contact" className="contact" ref={ref}>
       <div className="container">
-        <motion.div
-          className="contact-header"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="contact-header">
           <h2 className="section-title">Get In <strong>Touch</strong></h2>
           <p className="contact-subtitle">
             Have a project in mind? <em>Let's work together!</em>
           </p>
-        </motion.div>
+        </div>
 
         <div className="contact-content">
-          <motion.div
-            className="contact-info"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <div className="contact-info">
             <h3 className="contact-name">IAN KIM</h3>
             <p className="contact-bio">
               I'm a mechanical engineering student at Northeastern University - I design, simulate, 
@@ -69,14 +56,11 @@ export default function Contact() {
                 Resume
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.form
+          <form
             className="contact-form"
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="form-group">
               <label htmlFor="name">Name *</label>
@@ -130,7 +114,7 @@ export default function Contact() {
             <button type="submit" className="submit-button">
               Send Message
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </section>

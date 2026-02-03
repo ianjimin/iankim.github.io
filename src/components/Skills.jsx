@@ -1,10 +1,7 @@
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Skills() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const skills = [
     {
@@ -32,34 +29,17 @@ export default function Skills() {
   return (
     <section id="skills" className="skills" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <h2 className="section-title">
           <strong>Skills</strong>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          className="section-subtitle"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <p className="section-subtitle">
           Technologies I <em>work with</em>
-        </motion.p>
+        </p>
 
         <div className="skills-grid">
           {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="skill-category"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
+            <div key={index} className="skill-category">
               <div className="skill-header">
                 <h4 className="skill-title">{skill.title}</h4>
                 <div className="skill-stars">
@@ -74,7 +54,7 @@ export default function Skills() {
                   <span key={i}>{tag}</span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

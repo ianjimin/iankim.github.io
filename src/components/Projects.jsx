@@ -1,11 +1,8 @@
-import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 import ProjectModal from './ProjectModal'
 
 export default function Projects() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [selectedProject, setSelectedProject] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -186,29 +183,20 @@ export default function Projects() {
     <>
       <section id="projects" className="projects" ref={ref}>
         <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="section-header">
             <h2 className="section-title">
               <strong>Featured</strong> Projects
             </h2>
             <p className="section-subtitle">
               A collection of projects I've <em>built</em>
             </p>
-          </motion.div>
+          </div>
 
           <div className="projects-list">
             {projects.map((project, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="project-item"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ x: 10 }}
                 onClick={() => handleProjectClick(project)}
                 style={{ cursor: 'pointer' }}
               >
@@ -234,7 +222,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="project-arrow">→</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
