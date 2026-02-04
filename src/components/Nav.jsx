@@ -4,12 +4,13 @@ export default function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems = [
-    { href: '#projects', label: 'Projects' },
     { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#services', label: 'Skills' },
     { href: '#timeline', label: 'Experience' },
     { href: '#activities', label: 'Activities' },
     { href: '#contact', label: 'Contact' },
+    { href: '/resume.pdf', label: 'Resume', external: true },
   ]
 
   return (
@@ -22,6 +23,8 @@ export default function Nav() {
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
             >
               {item.label}
             </a>

@@ -9,6 +9,7 @@ export default function Projects() {
   const projects = [
     {
       title: 'Automated Ceramic Sorting System',
+      sampleLabel: 'Sample 1',
       description: 'Developed a complete quality control automation system using Python, Tkinter, and OCR technology. Transformed the QC process from a 4-step, 7.5-10 hour workflow to a streamlined 2-step, 2-3 hour process, reducing processing time by 70-80% for batches of 500 ceramics.',
       tags: ['Python', 'OCR', 'Tkinter', 'SQLite', 'Automation'],
       link: '#',
@@ -17,17 +18,29 @@ export default function Projects() {
         '/images/projects/tr317-sorting-1.jpg',
         '/images/projects/tr317-sorting-2.jpg'
       ],
+      imageCaptions: [
+        'GUI application with live OCR scanning and preprocessing toggles—before/after comparison shows improved read accuracy.',
+        'SQLite database and progress tracking—eliminated pre-arrangement step for 500-ceramic batches.'
+      ],
       details: [
         'Built Tkinter-based GUI application with SQLite database for data management',
         'Implemented OCR system using Tesseract with custom preprocessing pipeline (CLAHE, adaptive thresholding, dilation)',
         'Created scanning module with live feed, preprocessing toggles, and progress tracking',
         'Eliminated need for pre-arranging ceramics by serial number before sorting',
-        'Reduced total QC batch time from 7.5-10 hours to 2-3 hourss'
+        'Reduced total QC batch time from 7.5-10 hours to 2-3 hours'
       ],
-      technologies: ['Python', 'Tesseract OCR', 'Tkinter', 'SQLite3', 'OpenCV', 'Image Processing', 'Regex']
+      technologies: ['Python', 'Tesseract OCR', 'Tkinter', 'SQLite3', 'OpenCV', 'Image Processing', 'Regex'],
+      sampleFormat: true,
+      origin: 'Industry / Quality Control',
+      what: 'Ceramic QC required a 4-step, 7.5–10 hour manual process for batches of 500. Staff had to pre-arrange ceramics by serial number before sorting, creating bottlenecks and errors.',
+      how: 'Built a Python/Tkinter GUI with Tesseract OCR and custom preprocessing (CLAHE, adaptive thresholding). Constraint: existing hardware and SQLite. Challenge: OCR accuracy on varied surfaces—overcame with dilation and preprocessing toggles. Created live-feed scanning module with progress tracking.',
+      why: 'Reduced processing time by 70–80% (7.5–10 hrs → 2–3 hrs). Eliminated pre-arrangement step. Quantified impact: ~5 hours saved per 500-ceramic batch.',
+      individualContribution: 'Sole developer—designed, implemented, and tested the full system.',
+      skillsUsed: 'Python, OCR, computer vision, GUI development, SQLite, problem-solving'
     },
     {
       title: '1U Cubesat – NU Aerospace',
+      sampleLabel: 'Sample 2',
       description: 'Optimized camera payload bracket design under mass constraints using SolidWorks FEA, validating structural performance. Fabricated and assembled flight-hardware components using CNC machining and 3D printing, producing GD&T drawings.',
       tags: ['SolidWorks', 'FEA', 'CNC', 'Aerospace', 'GD&T'],
       link: '#',
@@ -37,6 +50,11 @@ export default function Projects() {
         '/images/projects/cubesat-2.jpg',
         '/images/projects/cubesat-3.jpg'
       ],
+      imageCaptions: [
+        'Camera payload bracket—FEA-validated design meeting strict mass limits for 1U cubesat.',
+        'Fabricated flight hardware via CNC machining and 3D printing.',
+        'GD&T drawings for manufacturing—supported system-level assembly and testing.'
+      ],
       details: [
         'Optimized bracket design under strict mass constraints',
         'Performed FEA analysis to validate structural performance',
@@ -44,7 +62,14 @@ export default function Projects() {
         'Created detailed GD&T drawings for manufacturing',
         'Supported system-level assembly and testing'
       ],
-      technologies: ['SolidWorks', 'FEA', 'CNC Machining', '3D Printing', 'GD&T', 'Aerospace Engineering']
+      technologies: ['SolidWorks', 'FEA', 'CNC Machining', '3D Printing', 'GD&T', 'Aerospace Engineering'],
+      sampleFormat: true,
+      origin: 'NU Aerospace / Northeastern University',
+      what: 'Camera payload bracket needed to meet strict mass limits while surviving launch loads. Team project for 1U cubesat development.',
+      how: 'Used SolidWorks FEA to iterate on bracket geometry under mass constraints. Fabricated components via CNC and 3D printing. Created GD&T drawings for manufacturing. Constraint: tight mass budget. Challenge: balancing stiffness with weight—resolved through iterative FEA and material selection.',
+      why: 'Delivered flight-ready bracket meeting mass and structural requirements. Supported system-level assembly and testing for cubesat program.',
+      individualContribution: 'Led bracket design and FEA validation; produced GD&T drawings; fabricated and assembled flight hardware.',
+      skillsUsed: 'SolidWorks, FEA, CNC, 3D printing, GD&T, aerospace engineering, teamwork'
     },
     {
       title: 'Pond Upgrade Acoustic Simulation',
@@ -188,7 +213,7 @@ export default function Projects() {
               <strong>Featured</strong> Projects
             </h2>
             <p className="section-subtitle">
-              A collection of projects I've <em>built</em>
+              A collection of projects I've <em>built</em> — Sample 1 & Sample 2 highlighted for grading (ENCP 3000)
             </p>
           </div>
 
@@ -201,6 +226,9 @@ export default function Projects() {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="project-content">
+                  {project.sampleLabel && (
+                    <span className="project-sample-badge">{project.sampleLabel}</span>
+                  )}
                   {project.previewImage && (
                     <div className="project-preview-image">
                       <img 

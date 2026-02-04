@@ -20,9 +20,9 @@ export default function Contact() {
     <section id="contact" className="contact" ref={ref}>
       <div className="container">
         <div className="contact-header">
-          <h2 className="section-title">Get In <strong>Touch</strong></h2>
+          <h2 className="section-title"><strong>Contact</strong></h2>
           <p className="contact-subtitle">
-            Have a project in mind? <em>Let's work together!</em>
+            Clear ways to reach me for next steps—co-op, full-time, or collaboration.
           </p>
         </div>
 
