@@ -62,7 +62,7 @@ export default function Timeline() {
       title: 'Project Intern',
       company: 'Uganda Development and Health Associates',
       location: 'Remote',
-      period: '2024',
+      period: '2023',
       description: 'Worked on development and health projects supporting community initiatives in Uganda.',
       achievements: [
         'Supported project planning and implementation',
@@ -96,7 +96,7 @@ export default function Timeline() {
           title: 'Product Intern',
           company: 'Avinet Research Supplies',
           location: 'Portland, ME · Remote',
-          period: 'Jan 2024 - Feb 2024',
+          period: '2024',
           description: 'Worked on product development and research supply solutions.',
           achievements: [
             'Supported product development initiatives',

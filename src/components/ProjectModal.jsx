@@ -14,7 +14,10 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
   if (!project || !isOpen) return null
 
-  const hasSampleFormat = project.sampleFormat && (project.what || project.how || project.why)
+  const getCategories = (p) =>
+    p.sampleLabel ? p.sampleLabel.split('/').map((s) => s.trim()).filter(Boolean) : []
+  const modalCategories = getCategories(project)
+  const hasSampleFormat = project.sampleFormat && (project.background || project.techStack || project.impact || project.what || project.how || project.why)
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -55,44 +58,42 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             )}
           </div>
           <div className="modal-info">
-            {project.sampleLabel && (
-              <span className="modal-sample-badge">{project.sampleLabel}</span>
+            {modalCategories.length > 0 && (
+              <div className="modal-sample-badges">
+                {modalCategories.map((label) => (
+                  <span key={label} className="modal-sample-badge">{label}</span>
+                ))}
+              </div>
             )}
             <h2 className="modal-title">{project.title}</h2>
-            {project.origin && (
+            {(project.source || project.origin) && (
               <p className="modal-origin">
-                <strong>Origin:</strong> {project.origin}
+                <strong>Experience at:</strong> {project.source || project.origin}
               </p>
             )}
             {hasSampleFormat ? (
               <>
-                {project.what && (
+                {(project.background || project.what) && (
                   <div className="modal-sample-section">
-                    <h3>What</h3>
-                    <p>{project.what}</p>
+                    <h3>Background</h3>
+                    <p>{project.background || project.what}</p>
                   </div>
                 )}
-                {project.how && (
+                {(project.techStack || project.how) && (
                   <div className="modal-sample-section">
-                    <h3>How</h3>
-                    <p>{project.how}</p>
+                    <h3>Tech Stack & Approach</h3>
+                    <p>{project.techStack || project.how}</p>
                   </div>
                 )}
-                {project.why && (
+                {(project.impact || project.why) && (
                   <div className="modal-sample-section">
-                    <h3>Why</h3>
-                    <p>{project.why}</p>
-                  </div>
-                )}
-                {project.individualContribution && (
-                  <div className="modal-sample-section">
-                    <h3>Individual Contribution</h3>
-                    <p>{project.individualContribution}</p>
+                    <h3>Impact</h3>
+                    <p>{project.impact || project.why}</p>
                   </div>
                 )}
                 {project.skillsUsed && (
                   <div className="modal-sample-section">
-                    <h3>Skills Used / Lessons Learned</h3>
+                    <h3>Skills Used</h3>
                     <p>{project.skillsUsed}</p>
                   </div>
                 )}
@@ -114,7 +115,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             )}
             {project.technologies && (
               <div className="modal-technologies">
-                <h3>Technologies & Tools</h3>
+                <h3>Highlights</h3>
                 <div className="modal-tags">
                   {project.technologies.map((tech, index) => (
                     <span key={index}>{tech}</span>

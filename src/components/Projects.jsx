@@ -5,13 +5,14 @@ export default function Projects() {
   const ref = useRef(null)
   const [selectedProject, setSelectedProject] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('All')
 
   const projects = [
     {
       title: 'Automated Ceramic Sorting System',
-      sampleLabel: 'Sample 1',
-      description: 'Developed a complete quality control automation system using Python, Tkinter, and OCR technology. Transformed the QC process from a 4-step, 7.5-10 hour workflow to a streamlined 2-step, 2-3 hour process, reducing processing time by 70-80% for batches of 500 ceramics.',
-      tags: ['Python', 'OCR', 'Tkinter', 'SQLite', 'Automation'],
+      sampleLabel: 'Process Automation/Software',
+      description: 'Developed a complete quality control automation system using Python involving OCR packages. Transformed the QC process from a 4-step, 7.5-10 hour workflow to a streamlined 2-step, 2-3 hour process, reducing processing time by 70-80% for batches of 500 ceramics.',
+      tags: ['Python', 'OCR', 'SQL', 'Automation'],
       link: '#',
       previewImage: '/images/projects/tr317-preview.jpg',
       images: [
@@ -20,27 +21,26 @@ export default function Projects() {
       ],
       imageCaptions: [
         'GUI application with live OCR scanning and preprocessing toggles—before/after comparison shows improved read accuracy.',
-        'SQLite database and progress tracking—eliminated pre-arrangement step for 500-ceramic batches.'
+        'SQLite database and progress tracking—easy step by step process for QC with software instructions.'
       ],
       details: [
         'Built Tkinter-based GUI application with SQLite database for data management',
-        'Implemented OCR system using Tesseract with custom preprocessing pipeline (CLAHE, adaptive thresholding, dilation)',
+        'Implemented OCR system using Tesseract with custom preprocessing pipeline using OpenCV (CLAHE, adaptive thresholding, dilation)',
         'Created scanning module with live feed, preprocessing toggles, and progress tracking',
         'Eliminated need for pre-arranging ceramics by serial number before sorting',
         'Reduced total QC batch time from 7.5-10 hours to 2-3 hours'
       ],
-      technologies: ['Python', 'Tesseract OCR', 'Tkinter', 'SQLite3', 'OpenCV', 'Image Processing', 'Regex'],
+      technologies: ['Python', 'Tesseract OCR', 'Tkinter', 'SQLite3', 'OpenCV', 'Image Processing'],
       sampleFormat: true,
-      origin: 'Industry / Quality Control',
-      what: 'Ceramic QC required a 4-step, 7.5–10 hour manual process for batches of 500. Staff had to pre-arrange ceramics by serial number before sorting, creating bottlenecks and errors.',
-      how: 'Built a Python/Tkinter GUI with Tesseract OCR and custom preprocessing (CLAHE, adaptive thresholding). Constraint: existing hardware and SQLite. Challenge: OCR accuracy on varied surfaces—overcame with dilation and preprocessing toggles. Created live-feed scanning module with progress tracking.',
-      why: 'Reduced processing time by 70–80% (7.5–10 hrs → 2–3 hrs). Eliminated pre-arrangement step. Quantified impact: ~5 hours saved per 500-ceramic batch.',
-      individualContribution: 'Sole developer—designed, implemented, and tested the full system.',
-      skillsUsed: 'Python, OCR, computer vision, GUI development, SQLite, problem-solving'
+      source: 'Co-op at Massa Products Corporation',
+      background: 'Ceramic QC workflow: 4-step manual process, 7.5–10 hr per 500-unit batch. Operators pre-arranged units by serial before sorting; bottlenecks and misreads were common. Requirement: automate read-and-sort without replacing existing hardware or DB.',
+      techStack: 'Python 3, Tkinter (GUI), Tesseract OCR, OpenCV (CLAHE, adaptive thresholding, morphological dilation), SQLite3. Pipeline: live camera feed → preprocessing toggles → OCR → regex parsing → DB write and sort output. Addressed low OCR accuracy on varied surfaces via configurable preprocessing and dilation; kept compatibility with legacy SQLite schema.',
+      impact: 'Throughput: 7.5–10 hr → 2–3 hr per 500-ceramic batch (~70–80% reduction). Removed pre-arrangement step; single operator can run full batch. ~5 hr saved per batch, scalable to higher volumes.',
+      skillsUsed: 'Python, Tesseract OCR, OpenCV, computer vision, GUI (Tkinter), SQLite, regex, pipeline design'
     },
     {
       title: '1U Cubesat – NU Aerospace',
-      sampleLabel: 'Sample 2',
+      sampleLabel: 'Design Optimization/FEA',
       description: 'Optimized camera payload bracket design under mass constraints using SolidWorks FEA, validating structural performance. Fabricated and assembled flight-hardware components using CNC machining and 3D printing, producing GD&T drawings.',
       tags: ['SolidWorks', 'FEA', 'CNC', 'Aerospace', 'GD&T'],
       link: '#',
@@ -64,15 +64,15 @@ export default function Projects() {
       ],
       technologies: ['SolidWorks', 'FEA', 'CNC Machining', '3D Printing', 'GD&T', 'Aerospace Engineering'],
       sampleFormat: true,
-      origin: 'NU Aerospace / Northeastern University',
-      what: 'Camera payload bracket needed to meet strict mass limits while surviving launch loads. Team project for 1U cubesat development.',
-      how: 'Used SolidWorks FEA to iterate on bracket geometry under mass constraints. Fabricated components via CNC and 3D printing. Created GD&T drawings for manufacturing. Constraint: tight mass budget. Challenge: balancing stiffness with weight—resolved through iterative FEA and material selection.',
-      why: 'Delivered flight-ready bracket meeting mass and structural requirements. Supported system-level assembly and testing for cubesat program.',
-      individualContribution: 'Led bracket design and FEA validation; produced GD&T drawings; fabricated and assembled flight hardware.',
-      skillsUsed: 'SolidWorks, FEA, CNC, 3D printing, GD&T, aerospace engineering, teamwork'
+      source: 'NU Aerospace / Northeastern University',
+      background: '1U cubesat camera payload bracket: must survive launch loads (vibration, shock) while staying within strict mass budget. Existing design overweight; needed structural validation and mass reduction without compromising mounting stiffness or alignment.',
+      techStack: 'SolidWorks (CAD + Simulation FEA), CNC machining, FDM 3D printing. Workflow: parametric bracket geometry → static FEA (fixed BCs at mounting points, applied loads) → iterate on topology and wall thickness to meet factor of safety and mass target. Generated ASME Y14.5–compliant GD&T drawings for machine shop. Fabricated flight hardware and integrated into stack; participated in system-level assembly and test.',
+      impact: 'Bracket design met mass and structural margins; hardware delivered for integration. Drawings and FEA package documented for future iterations. Contributed to flight-ready 1U bus and test campaign readiness.',
+      skillsUsed: 'SolidWorks, FEA, CNC, additive manufacturing, GD&T (Y14.5), aerospace structures, cross-functional integration'
     },
     {
       title: 'Pond Upgrade Acoustic Simulation',
+      sampleLabel: 'Design Optimization/Acoustic Simulation',
       description: 'Modeled acoustic behavior of existing pond and multiple redesign concepts using k-Wave pseudo-spectral simulation. Analyzed reverberation data to select optimal 25-ft square wall design that balances acoustic performance with construction feasibility and testing space requirements.',
       tags: ['MATLAB', 'k-Wave', 'Acoustic Simulation', '3D Modeling'],
       link: '#',
@@ -95,6 +95,7 @@ export default function Projects() {
     },
     {
       title: 'Dual Deployment Rocket',
+      sampleLabel: 'Design Optimization/Prototyping',
       description: 'Designed and built a dual-deployment rocket system, laser-cutting and 3D-printing structural components and soldering onboard avionics. Simulated flight dynamics in OpenRocket to optimize stability, apogee altitude, and deployment timing.',
       tags: ['Design', '3D Printing', 'OpenRocket', 'Avionics'],
       link: '#',
@@ -114,6 +115,7 @@ export default function Projects() {
     },
     {
       title: 'Machine Learning Material Classifier',
+      sampleLabel: 'Machine Learning/FEA',
       description: 'Developed machine learning models (Random Forest and CNN) to predict ceramic pack quality based on impedance data. Investigated crack formation using COMSOL stress analysis, providing data-driven fail criteria for quality control.',
       tags: ['Machine Learning', 'COMSOL', 'Python', 'Quality Control'],
       link: '#',
@@ -134,6 +136,7 @@ export default function Projects() {
     },
     {
       title: 'Brain Impact Analysis Research',
+      sampleLabel: 'FEA/Software',
       description: 'Performed modal analysis in Ansys on MRI-based brain meshes to identify dominant vibration modes relevant to impact response. Developed Python-based visualization tools to generate interactive 3D vector fields for analyzing brain reactivity under simulated collision forces.',
       tags: ['ANSYS', 'Python', 'Modal Analysis', 'Research', 'Data Visualization'],
       link: '#',
@@ -153,6 +156,7 @@ export default function Projects() {
     },
     {
       title: 'Phone Box For Screen Habits',
+      sampleLabel: 'Product Design/Prototyping',
       description: 'This phone box reimagines screen time management by empowering users through a flexible and gamified approach. It features a 3D printed phone stand and an ultrasonic sensor to detect phone presence and usage. A timing algorithm tracks box usage duration, rewarding users with points, ranks, and streaks, which are displayed on an LCD screen. An LED powered bear indicator is also used to reinforce feedback cues. The design is intentionally simple and non-restrictive to promote distraction free and intentional habit creation.',
       tags: ['Product Design', 'Gamification', 'Screen Time Management', '3D Printing', 'CAD', 'Electronics', 'Prototyping', 'Laser Cutting', 'Habit Formation'],
       link: '#',
@@ -177,6 +181,7 @@ export default function Projects() {
     },
     {
       title: 'Plate Deformation: Analytical vs. FEA',
+      sampleLabel: 'FEA',
       description: 'Compared analytical plate theory to SolidWorks FEA for a rectangular steel plate under concentrated point loads. Used circular-plate simplification and the Shi et al. formulation for rotationally restrained edges. Analyzed deflection at 100 N and 150 N, validated stress remained elastic below yield, and documented sources of error between hand calculations, simulation, and physical behavior.',
       tags: ['FEA', 'SolidWorks', 'Structural Analysis', 'Plate Theory', 'Research'],
       link: '/Ian-Kim-Research.pdf',
@@ -193,6 +198,15 @@ export default function Projects() {
       technologies: ['SolidWorks Simulation', 'FEA', 'Plate Theory', 'Structural Mechanics', 'Hand Calculations']
     }
   ]
+
+  const getProjectCategories = (p) =>
+    p.sampleLabel ? p.sampleLabel.split('/').map((s) => s.trim()).filter(Boolean) : []
+  const allCategories = [...new Set(projects.flatMap(getProjectCategories))]
+  const categories = ['All', ...allCategories.sort()]
+  const filteredProjects =
+    selectedCategory === 'All'
+      ? projects
+      : projects.filter((p) => getProjectCategories(p).includes(selectedCategory))
 
   const handleProjectClick = (project) => {
     setSelectedProject(project)
@@ -213,12 +227,25 @@ export default function Projects() {
               <strong>Featured</strong> Projects
             </h2>
             <p className="section-subtitle">
-              A collection of projects I've <em>built</em> — Sample 1 & Sample 2 highlighted for grading (ENCP 3000)
+              A collection of projects I've <em>built</em>
             </p>
           </div>
 
+          <div className="projects-category-filter">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                className={`category-pill ${selectedCategory === cat ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           <div className="projects-list">
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <div
                 key={index}
                 className="project-item"
@@ -226,8 +253,14 @@ export default function Projects() {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="project-content">
-                  {project.sampleLabel && (
-                    <span className="project-sample-badge">{project.sampleLabel}</span>
+                  {getProjectCategories(project).length > 0 && (
+                    <div className="project-sample-badges">
+                      {getProjectCategories(project).map((label) => (
+                        <span key={label} className="project-sample-badge">
+                          {label}
+                        </span>
+                      ))}
+                    </div>
                   )}
                   {project.previewImage && (
                     <div className="project-preview-image">

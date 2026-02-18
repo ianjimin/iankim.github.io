@@ -93,10 +93,10 @@ export default function Activities() {
   ]
 
   return (
-    <section id="activities" className="activities" ref={ref}>
+    <section id="audio-production" className="activities" ref={ref}>
       <div className="container">
         <h2 className="section-title">
-          <strong>Activities</strong>
+          <strong>Audio Production</strong>
         </h2>
 
         <p className="section-subtitle">
@@ -141,24 +141,6 @@ export default function Activities() {
                     </ul>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="spotify-playlist">
-            <h3 className="activities-heading">Featured Playlist</h3>
-            <div className="playlist-container">
-              <iframe
-                data-testid="embed-iframe"
-                style={{ borderRadius: '12px', width: '100%', border: 'none' }}
-                src="https://open.spotify.com/embed/playlist/3pDYQXFxLLBkn3J7mD3NeB?utm_source=generator"
-                width="100%"
-                height="352"
-                frameBorder="0"
-                allowFullScreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                title="Spotify Playlist"
-              />
             </div>
           </div>
         </div>

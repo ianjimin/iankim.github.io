@@ -4,13 +4,9 @@ export default function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems = [
-    { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
-    { href: '#services', label: 'Skills' },
     { href: '#timeline', label: 'Experience' },
-    { href: '#activities', label: 'Activities' },
-    { href: '#contact', label: 'Contact' },
-    { href: '/resume.pdf', label: 'Resume', external: true },
+    { href: '#audio-production', label: 'Audio Production' },
   ]
 
   return (
